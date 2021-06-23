@@ -27,6 +27,7 @@ As this is develpoed for basic usage, added only created one feature file and on
 2) Create driver class to initiate driver to run on multiple browsers.
 3) Create Tags and env variables to run on different tests in different environments.
 4) Create reusable functions to use in step definition methods.
+5) More parameterization on feature file , so we can move input data to feature file instead of keeping in class file. 
 
 ## Run Results
 
