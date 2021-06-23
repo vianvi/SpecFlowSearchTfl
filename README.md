@@ -21,7 +21,7 @@ As this is develpoed for basic usage, added only created one feature file and on
 2) Search criteria to supress  suggestions in From and To used KeyTabs.
 3) Used waits to click buttons and search results text verification.
 
-## <To-Do>
+## <To-Do>: Improvements Required
 1) In future move Hooks to seperate class file, instead of calling in each step defination.
 2) Create driver class to initiate driver to run on multiple browsers.
 3) Create Tags and env variables to run on different tests in different environments.
