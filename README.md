@@ -11,10 +11,10 @@ Run command line : Project location `dotnet test` .
 
 ## Approach
 
-As this is develpoed for basic usage, added only created one feature file and one step file.
+As this is developed for basic usage, added only created one feature file and one step file.
 1) Native Nunit assertions used for verifications.
 2) [BeforeScenario] and [AfterScenario] Hooks used to initiate and quit the driver.
-3) For timing issues used selinium webriver wait.
+3) For timing issues used selenium webdriver wait.
 
 ## Issues encountered and Sorted are:
 1) Identifying elements: tried to use CSS selectors where ever id's are not available.
@@ -23,11 +23,11 @@ As this is develpoed for basic usage, added only created one feature file and on
 4) Make sure correct version of selenium chrome driver downloaded from package manager.
 
 ## Improvements Required 
-1) In future move Hooks to seperate class file, instead of calling in each step defination.
+1) In future move Hooks to separate class file, instead of calling in each step definition.
 2) Create driver class to initiate driver to run on multiple browsers.
 3) Create Tags and env variables to run on different tests in different environments.
 4) Create reusable functions to use in step definition methods.
-5) More parameterization on feature file , so we can move input data to feature file instead of keeping in class file. 
+5) More parameterization on feature file, so we can move input data to feature file instead of keeping in class file. 
 
 ## Run Results
 
