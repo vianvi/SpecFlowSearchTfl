@@ -326,14 +326,15 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Verify With Different Sets Of Data")]
-        [NUnit.Framework.TestCaseAttribute("Westminister", "Ilford", null)]
-        [NUnit.Framework.TestCaseAttribute("North Greenwich Station", "North Wembley Station", null)]
-        public virtual void VerifyWithDifferentSetsOfData(string from, string to, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("Westminister", "Ilford", "Journey results", null)]
+        [NUnit.Framework.TestCaseAttribute("North Greenwich Station", "North Wembley Station", "Journey results", null)]
+        public virtual void VerifyWithDifferentSetsOfData(string from, string to, string message, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("From", from);
             argumentsOfScenario.Add("To", to);
+            argumentsOfScenario.Add("Message", message);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify With Different Sets Of Data", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 46
 this.ScenarioInitialize(scenarioInfo);
@@ -368,7 +369,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("I click on plan my journey button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 51
- testRunner.Then("I see search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("I see search results \'{0}\'", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

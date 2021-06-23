@@ -148,11 +148,10 @@ namespace SpecFlowSearchTfl.Steps
             driver.FindElement(By.Id("InputTo")).SendKeys(To);
             driver.FindElement(By.Id("InputTo")).SendKeys(Keys.Tab);
         }
-
-        [Then(@"I see search results")]
-        public void ThenISeeSearchResults()
+        [Then(@"I see search results '(.*)'")]
+        public void ThenISeeSearchResults(string Message)
         {
-            Assert.That(driver.FindElement(By.CssSelector(".jp-results-headline")).Text, Is.EqualTo("Journey results"));
+            Assert.That(driver.FindElement(By.CssSelector(".jp-results-headline")).Text, Is.EqualTo(Message));
         }
 
         [Then(@"I click on recents")]

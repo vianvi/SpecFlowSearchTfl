@@ -1,6 +1,17 @@
 ﻿Feature: TFL Journey Search
 
 # @mytag
+Scenario Outline: Verify With Different Sets Of Data
+    Given I have URL
+	And I enter location in from '<From>' field
+	And I enter location in to '<To>' field
+	When I click on plan my journey button
+	Then I see search results '<Message>'
+	Examples: 
+	| From                    | To                    | Message         |
+	| Westminister            | Ilford                | Journey results |
+	| North Greenwich Station | North Wembley Station | Journey results |
+
 Scenario: Add Valid Locations And Verify The Journey
 	Given I have URL
 	And I enter location in From field
@@ -43,13 +54,3 @@ Scenario: Check Recents Tab
 	And I click on recents
 	And I verify recent search
 
-Scenario Outline: Verify With Different Sets Of Data
-    Given I have URL
-	And I enter location in from '<From>' field
-	And I enter location in to '<To>' field
-	When I click on plan my journey button
-	Then I see search results
-	Examples: 
-	| From | To |
-	| Westminister | Ilford |
-	| North Greenwich Station | North Wembley Station |
