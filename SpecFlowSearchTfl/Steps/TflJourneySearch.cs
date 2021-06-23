@@ -42,23 +42,7 @@ namespace SpecFlowSearchTfl.Steps
             driver.FindElement(By.Id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")).Click();
             driver.FindElement(By.Id("cb-done-button")).Click();
         }
-
-
-        [Given(@"I enter location in From field")]
-        public void GivenIEnterLocationInFromField()
-        {
-            driver.FindElement(By.Id("InputFrom")).Click();
-            driver.FindElement(By.Id("InputFrom")).SendKeys("Embankment Underground Station");
-            driver.FindElement(By.Id("InputFrom")).SendKeys(Keys.Tab);
-        }
-
-        [Given(@"I enter location in To field")]
-        public void GivenIEnterLocationInToField()
-        {
-            driver.FindElement(By.Id("InputTo")).Click();
-            driver.FindElement(By.Id("InputTo")).SendKeys("Westminster Underground Station");
-            driver.FindElement(By.Id("InputTo")).SendKeys(Keys.Tab);
-        }
+        
         [When(@"I click on plan my journey button")]
         public void WhenIClickOnPlanMyJourneyButton()
         {
@@ -66,13 +50,14 @@ namespace SpecFlowSearchTfl.Steps
             driver.FindElement(By.Id("plan-journey-button")).Click();
         }
 
-        [Then(@"I verify the search results displayed")]
-        public void ThenIVerifyTheSearchResultsDisplayed()
+        [Then(@"I verify the (.*) in search results displayed")]
+        public void ThenIVerifyTheInSearchResultsDisplayed(string Message)
         {
             wait.Until(e => e.FindElement(By.CssSelector("h2.jp-result-transport.publictransport.clearfix")));
-            Assert.That(driver.FindElement(By.CssSelector("h2.jp-result-transport.publictransport.clearfix")).Text, Is.EqualTo("Fastest by public transport"));
+            Assert.That(driver.FindElement(By.CssSelector("h2.jp-result-transport.publictransport.clearfix")).Text, Is.EqualTo(Message));
 
         }
+
         [Given(@"I enter invalid location in From field")]
         public void GivenIEnterInvalidLocationInFromField()
         {
@@ -80,12 +65,11 @@ namespace SpecFlowSearchTfl.Steps
             driver.FindElement(By.Id("InputFrom")).SendKeys(",");
         }
 
-        [Then(@"I verify the no searchresults message displayed")]
-        public void ThenIVerifyTheNoSearchresultsMessageDisplayed()
+        [Then(@"I verify the No search results (.*)")]
+        public void ThenIVerifyTheNoSearchResults(string Message)
         {
             wait.Until(e => e.FindElement(By.CssSelector(".field-validation-errors > .field-validation-error")));
-            Assert.That(driver.FindElement(By.CssSelector(".field-validation-errors>.field-validation-error")).Text, Is.EqualTo("Sorry, we can\'t find a journey matching your criteria"));
-
+            Assert.That(driver.FindElement(By.CssSelector(".field-validation-errors>.field-validation-error")).Text, Is.EqualTo(Message));
         }
 
         [Given(@"I enter no location in From field")]
@@ -116,20 +100,19 @@ namespace SpecFlowSearchTfl.Steps
             driver.FindElement(By.CssSelector(".edit-journey > span")).Click();
         }
 
-        [Then(@"I enter new location in To field")]
-        public void ThenIEnterNewLocationInToField()
+        [Then(@"I enter (.*) in To field")]
+        public void ThenIEnterInToField(string NewToLocation)
         {
             driver.FindElement(By.Id("InputTo")).Click();
-            driver.FindElement(By.Id("InputTo")).SendKeys("Ilford");
+            driver.FindElement(By.Id("InputTo")).SendKeys(NewToLocation);
             driver.FindElement(By.Id("InputTo")).SendKeys(Keys.Tab);
         }
-
-        [Then(@"I verify new search results")]
-        public void ThenIVerifyNewSearchResults()
+        [Then(@"I verify (.*) search results")]
+        public void ThenIVerifySearchResults(string Message)
         {
             driver.FindElement(By.Id("plan-journey-button")).Click();
             wait.Until(e => e.FindElement(By.CssSelector("h2.jp-result-transport.publictransport.clearfix")));
-            Assert.That(driver.FindElement(By.CssSelector("h2.jp-result-transport.publictransport.clearfix")).Text, Is.EqualTo("Fastest by public transport"));
+            Assert.That(driver.FindElement(By.CssSelector("h2.jp-result-transport.publictransport.clearfix")).Text, Is.EqualTo(Message));
 
         }
 
@@ -162,10 +145,10 @@ namespace SpecFlowSearchTfl.Steps
             driver.FindElement(By.LinkText("Recents")).Click();
         }
 
-        [Then(@"I verify recent search")]
-        public void ThenIVerifyRecentSearch()
+        [Then(@"I  recent (.*) in search")]
+        public void ThenIRecentInSearch(string VerifyJourneyLink)
         {
-            var elements = driver.FindElements(By.LinkText("Embankment Underground Station to Westminster Underground Station"));
+            var elements = driver.FindElements(By.LinkText(VerifyJourneyLink));
             Assert.True(elements.Count > 0);
         }
 
