@@ -9,7 +9,7 @@ The template used is SpecFlow Project in Visual Studio.
 Run in Visual Studio Test Explorer.
 Run command line : Project location `dotnet test` .
 
-## Approch
+## Approach
 
 As this is develpoed for basic usage, added only created one feature file and one step file.
 1) Native Nunit assertions used for verifications.
