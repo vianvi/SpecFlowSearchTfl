@@ -1,9 +1,13 @@
-# TfL website – Journey Planner Search widget
+# TFL website – Journey Planner Search widget
 
 The aim of this project is setup basic UI automation framework using Specflow,C#, Selenium Webdriver and Chrome Driver.
 
 ## Setup
 The template used is SpecFlow Project in Visual Studio.
+
+## Run
+Run in Visual Studio Test Explorer.
+Run command line : Project location `dotnet test` .
 
 ## Approch
 
